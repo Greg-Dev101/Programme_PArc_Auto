@@ -1,6 +1,6 @@
 
 class Car {
-    constructor(immat, color, weight, power, tankcapacity, fuelQuantity, seats){
+    constructor(immat, color, weight, power, tankcapacity, fuelQuantity, seats, assurance, boardMessag){
     this.immat = immat;
     this.color = color;
     this.weight = weight;
@@ -14,21 +14,21 @@ class Car {
     
     repeindre(newColor) {
         if (newColor === this.color) {
-        console.log('Couleur identique');
+        return "Couleur identique"
         } 
         else {
         this.color = newColor;
-        console.log('La nouvelle couleur est : ' + this.color);
+        return "La nouvelle couleur est : " + this.color
         }
     }
 
     mettreEssence(addedFuel) {
         if ((addedFuel+this.fuelQuantity) <= this.tankcapacity) {
-            console.log("Appoint d'essence effectué, vous disposez désormais de " + (addedFuel+this.fuelQuantity) + " litres d'essence." )
             this.fuelQuantity = (addedFuel+this.fuelQuantity)
+            return "Appoint de " + addedFuel + " litres d'essence effectué, vous disposez désormais de " + (this.fuelQuantity) + " litres d'essence."
         }
         else {
-            console.log("Appoint impossible, veuillez recommencer")
+            return "Appoint de " + addedFuel + " impossible, réservoir trop petit."
         }
     }
     
@@ -37,46 +37,46 @@ class Car {
         if ((speed<=50)) {
         let consumption=distance*0.1
             if ((consumption>=this.fuelQuantity)) {
-                console.log ("Trajet impossible")
+                return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                console.log("Vous avez consommé " + consumption + " litres. Il vous reste " + (this.fuelQuantity-consumption) + " litres.")
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
               
         if ((speed>50) && (speed<=90)) {
         let consumption=distance*0.05
             if ((consumption>=this.fuelQuantity)) {
-                console.log ("Trajet impossible")
+                return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                console.log("Vous avez consommé " + consumption + " litres. Il vous reste " + (this.fuelQuantity-consumption) + " litres.")
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
 
         if ((speed>90) && (speed<=130)) {
         let consumption=distance*0.08
             if ((consumption>=this.fuelQuantity)) {
-                console.log ("Trajet impossible")
+                return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                console.log("Vous avez consommé " + consumption + " litres. Il vous reste " + (this.fuelQuantity-consumption) + " litres.")
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
 
         if ((speed>130)) {
             let consumption=distance*0.12
             if ((consumption>=this.fuelQuantity)) {
-                console.log ("Trajet impossible")
+                return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                console.log("Vous avez consommé " + consumption + " litres. Il vous reste " + (this.fuelQuantity-consumption) + " litres.")
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
     }
 
     toString() {
-        console.log ("Voiture immatriculé " + this.immat + " , une puissance de " + this.power + " et de couleur " + this.color + ".")
+        return "Voiture immatriculé " + this.immat + ", d'une puissance de " + this.power + " chevaux et de couleur " + this.color + "."
     }
 
     set immatriculation(value) {
@@ -89,19 +89,21 @@ class Car {
 const car1 = new Car("AA 111 BB", "red", 1200, 110, 40.0, 5.0, 5, false, "")
 console.log(car1)
 
-car1.repeindre("red")
+console.log(car1.repeindre("red"))
 
-car1.repeindre("black")
+console.log(car1.repeindre("black"))
 
-car1.mettreEssence(36)
+console.log(car1.mettreEssence(36))
+
 console.log(car1)
 
-car1.mettreEssence(34)
+console.log(car1.mettreEssence(34))
+
 console.log(car1)
 
-car1.seDeplacer(300, 120)
+console.log(car1.seDeplacer(100, 120))
 
-car1.toString()
+console.log(car1.toString())
 
-car1.immatriculation = true
+car1.immatriculation = false
 console.log(car1)
