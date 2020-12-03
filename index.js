@@ -79,9 +79,9 @@ class Car {
         return "Voiture immatriculé " + this.immat + ", d'une puissance de " + this.power + " chevaux et de couleur " + this.color + "."
     }
 
-    set immatriculation(value) {
+    souscrireAssurance(value) {
         this.assurance = value;
-        this.boardMessage = "voiture assurée, bonne route !"
+        return this.boardMessage ? "Voiture assurée, bonne route !" : "Voiture non assurée, conduite interdite."
     }
 
 }
@@ -105,5 +105,4 @@ console.log(car1.seDeplacer(100, 120))
 
 console.log(car1.toString())
 
-car1.immatriculation = false
-console.log(car1)
+console.log(car1.souscrireAssurance(true))
