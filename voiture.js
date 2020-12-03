@@ -71,26 +71,3 @@ class Car {
             }
     }
 }
-
-const car1 = new Car("AA 111 BB", "red", 1200, 110, 40.0, 5.0, 5, false, "")
-console.log(car1)
-
-console.log(car1.toPaint("red"))
-
-console.log(car1.toPaint("black"))
-
-console.log(car1.toRefuel(36))
-
-console.log(car1)
-
-console.log(car1.toRefuel(34))
-
-console.log(car1)
-
-console.log(car1.toMove(128, 140))
-
-console.log(car1.toString())
-
-console.log(car1.addInsurance(true))
-
-console.log(car1)
