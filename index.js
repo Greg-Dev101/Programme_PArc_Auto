@@ -1,6 +1,6 @@
 
 class Car {
-    constructor(immat, color, weight, power, tankcapacity, fuelQuantity, seats, assurance, bordMessage){
+    constructor(immat, color, weight, power, tankcapacity, fuelQuantity, seats){
     this.immat = immat;
     this.color = color;
     this.weight = weight;
@@ -9,7 +9,7 @@ class Car {
     this.fuelQuantity = fuelQuantity;
     this.seats = seats
     this.assurance = false;
-    this.bordMessage = "Bienvenue";
+    this.boardMessage = "";
     }
     
     repeindre(newColor) {
@@ -77,8 +77,13 @@ class Car {
 
     toString() {
         console.log ("Voiture immatriculé " + this.immat + " , une puissance de " + this.power + " et de couleur " + this.color + ".")
-
     }
+
+    set immatriculation(value) {
+        this.assurance = value;
+        this.boardMessage = "voiture assurée, bonne route !"
+    }
+
 }
 
 const car1 = new Car("AA 111 BB", "red", 1200, 110, 40.0, 5.0, 5, false, "")
@@ -97,3 +102,6 @@ console.log(car1)
 car1.seDeplacer(300, 120)
 
 car1.toString()
+
+car1.immatriculation = true
+console.log(car1)
