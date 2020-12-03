@@ -1,29 +1,29 @@
 
 class Car {
-    constructor(immat, color, weight, power, tankcapacity, fuelQuantity, seats, assurance, boardMessag){
-    this.immat = immat;
-    this.color = color;
-    this.weight = weight;
-    this.power = power;
-    this.tankcapacity = tankcapacity;
-    this.fuelQuantity = fuelQuantity;
+    constructor(immat, color, weight, power, tankCapacity, fuelQuantity, seats, insurance, boardMessage) {
+    this.immat = immat
+    this.color = color
+    this.weight = weight
+    this.power = power
+    this.tankCapacity = tankCapacity
+    this.fuelQuantity = fuelQuantity
     this.seats = seats
-    this.assurance = false;
-    this.boardMessage = "";
+    this.insurance = false
+    this.boardMessage = "Attention, véhicule non assuré. Conduite interdite !"
     }
     
-    repeindre(newColor) {
+    toPaint(newColor) {
         if (newColor === this.color) {
-        return "Couleur identique"
+        return "La couleur demandée est identique à celle du véhicule."
         } 
         else {
         this.color = newColor;
-        return "La nouvelle couleur est : " + this.color
+        return "La couleur de votre véhicule est désormais : " + this.color + "."
         }
     }
 
-    mettreEssence(addedFuel) {
-        if ((addedFuel+this.fuelQuantity) <= this.tankcapacity) {
+    toRefuel(addedFuel) {
+        if ((addedFuel+this.fuelQuantity) <= this.tankCapacity) {
             this.fuelQuantity = (addedFuel+this.fuelQuantity)
             return "Appoint de " + addedFuel + " litres d'essence effectué, vous disposez désormais de " + (this.fuelQuantity) + " litres d'essence."
         }
@@ -32,15 +32,14 @@ class Car {
         }
     }
     
-    seDeplacer(distance, speed) {
-        
+    toMove(distance, speed) {
         if ((speed<=50)) {
         let consumption=distance*0.1
             if ((consumption>=this.fuelQuantity)) {
                 return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres d'essence. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
               
@@ -50,7 +49,7 @@ class Car {
                 return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres d'essence. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
 
@@ -60,7 +59,7 @@ class Car {
                 return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres d'essence. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
 
@@ -70,39 +69,50 @@ class Car {
                 return "Trajet impossible, quantité d'essence insuffisante."
             }
             else {
-                return "Pendant votre trajet, vous consommerez " + consumption + " litres. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
+                return "Pendant votre trajet, vous consommerez " + consumption + " litres d'essence. A l'arrivée, il vous restera " + (this.fuelQuantity-consumption) + " litres."
             }
         }
     }
 
     toString() {
-        return "Voiture immatriculé " + this.immat + ", d'une puissance de " + this.power + " chevaux et de couleur " + this.color + "."
+        return "Véhicule immatriculé " + this.immat + ", d'une puissance de " + this.power + " chevaux et de couleur " + this.color + "."
     }
 
-    souscrireAssurance(value) {
-        this.assurance = value;
-        return this.boardMessage ? "Voiture assurée, bonne route !" : "Voiture non assurée, conduite interdite."
+    addInsurance(newInsurance) {
+        if ((newInsurance === this.insurance)) {
+            return this.boardMessage
+            }
+            else {
+                this.insurance = newInsurance
+                this.boardMessage = "Véhicule désormais assuré, bonne route."
+                return this.boardMessage
+            }
     }
-
 }
+
+
+   
+
 
 const car1 = new Car("AA 111 BB", "red", 1200, 110, 40.0, 5.0, 5, false, "")
 console.log(car1)
 
-console.log(car1.repeindre("red"))
+console.log(car1.toPaint("red"))
 
-console.log(car1.repeindre("black"))
+console.log(car1.toPaint("black"))
 
-console.log(car1.mettreEssence(36))
-
-console.log(car1)
-
-console.log(car1.mettreEssence(34))
+console.log(car1.toRefuel(36))
 
 console.log(car1)
 
-console.log(car1.seDeplacer(100, 120))
+console.log(car1.toRefuel(34))
+
+console.log(car1)
+
+console.log(car1.toMove(100, 120))
 
 console.log(car1.toString())
 
-console.log(car1.souscrireAssurance(true))
+console.log(car1.addInsurance(false))
+
+console.log(car1)
