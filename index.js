@@ -22,17 +22,17 @@ class Car {
         }
     }
 
-    mettreEssence(newFuelQuantity) {
-        if ((newFuelQuantity+this.fuelQuantity) <= this.tankcapacity) {
-            console.log("Appoint d'essence effectué, vous disposez désormais de " + (newFuelQuantity+this.fuelQuantity) + " litres d'essence." )
-            this.fuelQuantity = (newFuelQuantity+this.fuelQuantity)
+    mettreEssence(addedFuel) {
+        if ((addedFuel+this.fuelQuantity) <= this.tankcapacity) {
+            console.log("Appoint d'essence effectué, vous disposez désormais de " + (addedFuel+this.fuelQuantity) + " litres d'essence." )
+            this.fuelQuantity = (addedFuel+this.fuelQuantity)
         }
         else {
             console.log("Appoint impossible, veuillez recommencer")
         }
     }
     
-    sedeplacer(distance, speed) {
+    seDeplacer(distance, speed) {
         
         if ((speed<=50)) {
         let consumption=distance*0.1
@@ -74,6 +74,11 @@ class Car {
             }
         }
     }
+
+    toString() {
+        console.log ("Voiture immatriculé " + this.immat + " , une puissance de " + this.power + " et de couleur " + this.color + ".")
+
+    }
 }
 
 const car1 = new Car("AA 111 BB", "red", 1200, 110, 40.0, 5.0, 5, false, "")
@@ -89,4 +94,6 @@ console.log(car1)
 car1.mettreEssence(34)
 console.log(car1)
 
-car1.sedeplacer(300, 120)
+car1.seDeplacer(300, 120)
+
+car1.toString()
